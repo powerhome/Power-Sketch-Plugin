@@ -58,6 +58,19 @@ export function onSupplyTerritoriesAbbr(context) {
   }
 }
 
+//test
+export function onSupplyTest(context) {
+  var dataKey = context.data.key;
+  var dataCount = context.data.requestedCount;
+
+  var dataIndex = 0;
+  while (dataIndex < dataCount) {
+      const terr_abbr = sample(TERR_ABBR);
+      DataSupplier.supplyDataAtIndex(dataKey, terr_abbr, dataIndex);
+      dataIndex++;
+  }
+}
+
 //randomize function
 const sample = array => {
   const index = Math.floor(Math.random() * array.length);
