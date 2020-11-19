@@ -1,0 +1,27 @@
+{
+  "name": "phrg",
+  "version": "0.1.0",
+  "description": "A DataSupplier plugin",
+  "engines": {
+    "sketch": ">=3.0"
+  },
+  "skpm": {
+    "name": "phrg",
+    "manifest": "src/manifest.json",
+    "main": "phrg.sketchplugin",
+    "assets": [
+      "assets/**/*"
+    ],
+    "sketch-assets-file": "sketch-assets/icons.sketch"
+  },
+  "scripts": {
+    "build": "skpm-build",
+    "watch": "skpm-build --watch",
+    "start": "skpm-build --watch",
+    "postinstall": "npm run build && skpm-link"
+  },
+  "devDependencies": {
+    "@skpm/builder": "^0.7.4"
+  },
+  "author": "christina tai <christina.tai@powerhrg.com>"
+}
