@@ -35,11 +35,10 @@ module.exports = NEW_SET;
 
 In `manifest.json`, add an action (below) under the handler. Replace `NewSet` with the new data set name.
 
-```
+```diff
 "handlers": {
   "actions": {
-    "Startup": "onStartup",
-    "Shutdown": "onShutdown",
+    ...
 +   “SupplyNewSet”: “onSupplyNewSet”
   }
 }
@@ -47,12 +46,12 @@ In `manifest.json`, add an action (below) under the handler. Replace `NewSet` wi
  
 In `phrg.js`, add your data set to the list of constants, start up function, and export function. The user-facing name of the data set can be modified in the `Data Set Name`. Note that the export function also uses a randomizer function called `sample`.
 
-```
+```diff
 //constants
 + const NEW_SET = require(“../constants/new_set”);
 ```
 
-```
+```diff
 //startup
 export function onStartup () {
   ...
@@ -60,7 +59,7 @@ export function onStartup () {
 }
 ```
 
-```js
+```diff
 + //new set
 + export function onSupplyNewSet(context) {
 +   var dataKey = context.data.key;
