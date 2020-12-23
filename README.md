@@ -1,5 +1,7 @@
 # Power Sketch Plugin
 
+This is a sketch plugin that aims to keep a central repository of data we use to build and design software at Power Home Remodeling.
+
 ## Installation
 
 - [Download](../../releases/latest/download/phrg.sketchplugin.zip) the latest release of the plugin
@@ -29,65 +31,69 @@ const NEW_SET = [
 ]
 
 module.exports = NEW_SET;
+```
+
+In `manifest.json`, add an action (below) under the handler. Replace `NewSet` with the new data set name.
 
 ```
-In `manifest.json`, add an action under the handler by replacing `NewSet` with the new data set name
-```
-“SupplyNewSet”: “onSupplyNewSet”
+"handlers": {
+  "actions": {
+    "Startup": "onStartup",
+    "Shutdown": "onShutdown",
++   “SupplyNewSet”: “onSupplyNewSet”
+  }
+}
 ```
  
-In `phrg.js`, add your data set to the list of constants, start up function, and export function
+In `phrg.js`, add your data set to the list of constants, start up function, and export function. The user-facing name of the data set can be modified in the `Data Set Name`. Note that the export function also uses a randomizer function called `sample`.
+
 ```
 //constants
-const NEW_SET = require(“../constants/new_set”);
++ const NEW_SET = require(“../constants/new_set”);
 ```
 
 ```
 //startup
 export function onStartup () {
   ...
-  DataSupplier.registerDataSupplier(‘public.text’, 'Data Set Name', 'SupplyNewSet’);
++ DataSupplier.registerDataSupplier(‘public.text’, 'Data Set Name', 'SupplyNewSet’);
 }
 ```
-The user-facing name of the data set can be modified in the `Data Set Name`.
 
+```js
++ //new set
++ export function onSupplyNewSet(context) {
++   var dataKey = context.data.key;
++   var dataCount = context.data.requestedCount;
++ 
++   var dataIndex = 0;
++   while (dataIndex < dataCount) {
++       const new_set = sample(NEW_SET);
++       DataSupplier.supplyDataAtIndex(dataKey, new_set, dataIndex);
++       dataIndex++;
++   }
++ }
 ```
-//new set
-export function onSupplyNewSet(context) {
-  var dataKey = context.data.key;
-  var dataCount = context.data.requestedCount;
-
-  var dataIndex = 0;
-  while (dataIndex < dataCount) {
-      const new_set = sample(NEW_SET);
-      DataSupplier.supplyDataAtIndex(dataKey, new_set, dataIndex);
-      dataIndex++;
-  }
-}
-```
-*Note: This function uses a randomizer called `sample`.*
 
 #### Testing in Sketch
 
-To test if your new data set is working as expected,
 1. Quit Sketch
 2. Run `npm install`
-3. Open Sketch again and see if it's working as expected
+3. Open Sketch again and check if it's working as expected
 
 *Note: You don't need to commit your changes to test locally.*
 
 ### Publishing a new version
 
+Run the command below where `bump` can be `major`, `minor` or `patch`. Make sure to include `--no-registry` so that the plugin does not get added to Sketch plugin registry.
 
 ```bash
 skpm publish <bump> --no-registry
 ```
 
-(where `bump` can be `patch`, `minor` or `major`)
-
-* Major – New data set added or deleted
-* Minor – Existing data set edited
-* Patch – Bugs, typos
+* `Major` – New data set added or deleted
+* `Minor` – Existing data set edited
+* `Patch` – Bugs, typos
 
 *Note: `skpm publish` will create a new release on your GitHub repository and create an appcast file in order for Sketch users to be notified of the update.*
 
