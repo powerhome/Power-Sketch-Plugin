@@ -14,7 +14,6 @@
           "SupplyTerritories": "onSupplyTerritories",
           "SupplyTerritoriesAbbr": "onSupplyTerritoriesAbbr",
           "SupplyEmotions": "onSupplyEmotions",
-          "SupplyTest": "onSupplyTest"
         }
       }
     }

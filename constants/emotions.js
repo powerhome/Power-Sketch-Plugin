@@ -1,6 +1,8 @@
 const EMO = [
     "Sad",
-    "Happy"
+    "Happy",
+    "Angry",
+    "Nostalgic"
 ]
 
 module.exports = EMO;
