@@ -1,4 +1,4 @@
-# phrg
+# Power Sketch Plugin
 
 ## Installation
 
@@ -10,7 +10,90 @@
 
 _This plugin was created using `skpm`. For a detailed explanation on how things work, checkout the [skpm Readme](https://github.com/skpm/skpm/blob/master/README.md)._
 
-### Usage
+### Add a data set locally
+
+#### Getting started
+
+Clone repo
+```
+git clone https://github.com/powerhome/Power-Sketch-Plugin.git
+```
+#### Adding to the repo
+
+After creating a branch, you would need to create a javascript file in the constants folder for the new data set constants. Follow the format below where `NEW_SET` is the name of the new data set.
+```
+const NEW_SET = [
+  "Data 1",
+  "Data 2",
+  "Data 3"
+]
+
+module.exports = NEW_SET;
+
+```
+In `manifest.json`, add an action under the handler by replacing `NewSet` with the new data set name
+```
+“SupplyNewSet”: “onSupplyNewSet”
+```
+ 
+In `phrg.js`, add your data set to the list of constants, start up function, and export function
+```
+//constants
+const NEW_SET = require(“../constants/new_set”);
+```
+
+```
+//startup
+export function onStartup () {
+  ...
+  DataSupplier.registerDataSupplier(‘public.text’, 'Data Set Name', 'SupplyNewSet’);
+}
+```
+The user-facing name of the data set can be modified in the `Data Set Name`.
+
+```
+//new set
+export function onSupplyNewSet(context) {
+  var dataKey = context.data.key;
+  var dataCount = context.data.requestedCount;
+
+  var dataIndex = 0;
+  while (dataIndex < dataCount) {
+      const new_set = sample(NEW_SET);
+      DataSupplier.supplyDataAtIndex(dataKey, new_set, dataIndex);
+      dataIndex++;
+  }
+}
+```
+*Note: This function uses a randomizer called `sample`.*
+
+#### Testing in Sketch
+
+To test if your new data set is working as expected,
+1. Quit Sketch
+2. Run `npm install`
+3. Open Sketch again and see if it's working as expected
+
+*Note: You don't need to commit your changes to test locally.*
+
+### Publishing a new version
+
+
+```bash
+skpm publish <bump> --no-registry
+```
+
+(where `bump` can be `patch`, `minor` or `major`)
+
+* Major – New data set added or deleted
+* Minor – Existing data set edited
+* Patch – Bugs, typos
+
+*Note: `skpm publish` will create a new release on your GitHub repository and create an appcast file in order for Sketch users to be notified of the update.*
+
+### Other
+
+#### Usage
 
 Install the dependencies
 
@@ -30,49 +113,7 @@ To watch for changes:
 npm run watch
 ```
 
-### Custom Configuration
-
-#### Babel
-
-To customize Babel, you have two options:
-
-- You may create a [`.babelrc`](https://babeljs.io/docs/usage/babelrc) file in your project's root directory. Any settings you define here will overwrite matching config-keys within skpm preset. For example, if you pass a "presets" object, it will replace & reset all Babel presets that skpm defaults to.
-
-- If you'd like to modify or add to the existing Babel config, you must use a `webpack.skpm.config.js` file. Visit the [Webpack](#webpack) section for more info.
-
-#### Webpack
-
-To customize webpack create `webpack.skpm.config.js` file which exports function that will change webpack's config.
-
-```js
-/**
- * Function that mutates original webpack config.
- * Supports asynchronous changes when promise is returned.
- *
- * @param {object} config - original webpack config.
- * @param {object} entry - entry property from webpack config
- * @param {boolean} entry.isPluginCommand - whether the config is for a plugin command or a resource
- **/
-module.exports = function(config, entry) {
-  /** you can change config here **/
-};
-```
-
-To use the polyfills or the mocks for certain Node.js globals and modules use the `node` property.
-
-Visit [the official documention](https://webpack.js.org/configuration/node/) for available options.
-
-```js
-if(entry.isPluginCommand ){
-  config.node = {
-    setImmediate: false
-  }
-} else {
-  config.node = false;
-}
-```
-
-### Debugging
+#### Debugging
 
 To view the output of your `console.log`, you have a few different options:
 
@@ -88,23 +129,3 @@ skpm log
 
 The `-f` option causes `skpm log` to not stop when the end of logs is reached, but rather to wait for additional data to be appended to the input
 
-### Publishing your plugin
-
-```bash
-skpm publish <bump>
-```
-
-(where `bump` can be `patch`, `minor` or `major`)
-
-`skpm publish` will create a new release on your GitHub repository and create an appcast file in order for Sketch users to be notified of the update.
-
-You will need to specify a `repository` in the `package.json`:
-
-```diff
-...
-+ "repository" : {
-+   "type": "git",
-+   "url": "git+https://github.com/ORG/NAME.git"
-+  }
-...
-```
