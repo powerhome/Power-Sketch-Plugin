@@ -13,7 +13,7 @@
           "SupplyDepartments": "onSupplyDepartments",
           "SupplyTerritories": "onSupplyTerritories",
           "SupplyTerritoriesAbbr": "onSupplyTerritoriesAbbr",
-          "SupplyEmotions": "onSupplyEmotions",
+          "SupplyEmotions": "onSupplyEmotions"
         }
       }
     }
