@@ -1,7 +1,7 @@
 {
-  "name": "phrg",
+  "name": "Power",
   "version": "6.19.0",
-  "description": "A DataSupplier plugin",
+  "description": "Power Home Remodeling data supplier",
   "engines": {
     "sketch": ">=3.0"
   },
