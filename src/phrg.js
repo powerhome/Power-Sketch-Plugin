@@ -6,12 +6,14 @@ const util = require('util')
 const DEPT = require("../constants/departments");
 const TERR = require("../constants/territories");
 const TERR_ABBR = require("../constants/territories_abbr");
+const EMO = require("../constants/emotions");
 
 //startup
 export function onStartup () {
   DataSupplier.registerDataSupplier('public.text', 'Departments', 'SupplyDepartments');
   DataSupplier.registerDataSupplier('public.text', 'Territories', 'SupplyTerritories');
   DataSupplier.registerDataSupplier('public.text', 'TerritoriesAbbr', 'SupplyTerritoriesAbbr');
+  DataSupplier.registerDataSupplier('public.text', 'Emotions', 'SupplyEmotions');
 }
 
 //shutdown
@@ -67,6 +69,19 @@ export function onSupplyTest(context) {
   while (dataIndex < dataCount) {
       const terr_abbr = sample(TERR_ABBR);
       DataSupplier.supplyDataAtIndex(dataKey, terr_abbr, dataIndex);
+      dataIndex++;
+  }
+}
+
+//emotions
+export function onSupplyEmotions(context) {
+  var dataKey = context.data.key;
+  var dataCount = context.data.requestedCount;
+
+  var dataIndex = 0;
+  while (dataIndex < dataCount) {
+      const emo = sample(EMO);
+      DataSupplier.supplyDataAtIndex(dataKey, emo, dataIndex);
       dataIndex++;
   }
 }
