@@ -1,4 +1,5 @@
 {
+  "name": "Power Home Remodeling",
   "compatibleVersion": 3,
   "bundleVersion": 1,
   "icon": "icon.png",
@@ -13,12 +14,11 @@
           "SupplyDepartments": "onSupplyDepartments",
           "SupplyTerritories": "onSupplyTerritories",
           "SupplyTerritoriesAbbr": "onSupplyTerritoriesAbbr",
-          "SupplyEmotions": "onSupplyEmotions"
         }
       }
     }
   ],
   "menu": {
-    "title": "Power"
+    "title": "phrg"
   }
 }

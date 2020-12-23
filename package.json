@@ -1,7 +1,7 @@
 {
   "name": "Power",
   "version": "6.19.0",
-  "description": "Power Home Remodeling data supplier",
+  "description": "Power Home Remodeling data supplier plugin",
   "engines": {
     "sketch": ">=3.0"
   },
@@ -27,5 +27,5 @@
   "devDependencies": {
     "@skpm/builder": "^0.7.4"
   },
-  "author": "christina tai <christina.tai@powerhrg.com>"
+  "author": "Power Home Remodeling Group, LLC <christina.tai@powerhrg.com>"
 }
