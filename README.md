@@ -12,7 +12,7 @@ This is a sketch plugin that aims to keep a central repository of data we use to
 
 _This plugin was created using `skpm`. For a detailed explanation on how things work, checkout the [skpm Readme](https://github.com/skpm/skpm/blob/master/README.md)._
 
-### Add a data set locally
+### Add data locally
 
 #### Getting started
 
@@ -20,7 +20,7 @@ Clone repo
 ```
 git clone https://github.com/powerhome/Power-Sketch-Plugin.git
 ```
-#### Adding to the repo
+#### Add a data set to the repo
 
 After creating a branch, you would need to create a javascript file in the constants folder for the new data set constants. Follow the format below where `NEW_SET` is the name of the new data set.
 ```
@@ -90,7 +90,7 @@ Run the command below where `bump` can be `major`, `minor` or `patch`. Make sure
 skpm publish <bump> --no-registry
 ```
 
-* `Major` – New data set added or deleted
+* `Major` – Data set added or deleted
 * `Minor` – Existing data set edited
 * `Patch` – Bugs, typos
 
