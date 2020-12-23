@@ -12,7 +12,7 @@ const EMO = require("../constants/emotions");
 export function onStartup () {
   DataSupplier.registerDataSupplier('public.text', 'Departments', 'SupplyDepartments');
   DataSupplier.registerDataSupplier('public.text', 'Territories', 'SupplyTerritories');
-  DataSupplier.registerDataSupplier('public.text', 'TerritoriesAbbr', 'SupplyTerritoriesAbbr');
+  DataSupplier.registerDataSupplier('public.text', 'Territories (abbr)', 'SupplyTerritoriesAbbr');
   DataSupplier.registerDataSupplier('public.text', 'Emotions', 'SupplyEmotions');
 }
 
@@ -56,32 +56,6 @@ export function onSupplyTerritoriesAbbr(context) {
   while (dataIndex < dataCount) {
       const terr_abbr = sample(TERR_ABBR);
       DataSupplier.supplyDataAtIndex(dataKey, terr_abbr, dataIndex);
-      dataIndex++;
-  }
-}
-
-//test
-export function onSupplyTest(context) {
-  var dataKey = context.data.key;
-  var dataCount = context.data.requestedCount;
-
-  var dataIndex = 0;
-  while (dataIndex < dataCount) {
-      const terr_abbr = sample(TERR_ABBR);
-      DataSupplier.supplyDataAtIndex(dataKey, terr_abbr, dataIndex);
-      dataIndex++;
-  }
-}
-
-//emotions
-export function onSupplyEmotions(context) {
-  var dataKey = context.data.key;
-  var dataCount = context.data.requestedCount;
-
-  var dataIndex = 0;
-  while (dataIndex < dataCount) {
-      const emo = sample(EMO);
-      DataSupplier.supplyDataAtIndex(dataKey, emo, dataIndex);
       dataIndex++;
   }
 }
