@@ -1,6 +1,6 @@
 {
   "name": "Power",
-  "version": "6.19.1",
+  "version": "6.19.2",
   "description": "Power Home Remodeling data supplier plugin",
   "engines": {
     "sketch": ">=3.0"
