@@ -23,7 +23,7 @@ git clone https://github.com/powerhome/Power-Sketch-Plugin.git
 #### Add a data set to the repo
 
 After creating a branch, you would need to create a javascript file in the `constants` folder for the new data set constants. Follow the format below where `NEW_SET` is the name of the new data set.
-```
+```diff
 + const NEW_SET = [
 +   "Data 1",
 +   "Data 2",
