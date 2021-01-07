@@ -2,7 +2,11 @@
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <item>
+<<<<<<< HEAD
       <enclosure url="https://github.com/powerhome/sketch-data-plugin/releases/download/v9.1.4/phrg.sketchplugin.zip" sparkle:version="9.1.4"/>
+=======
+      <enclosure url="https://github.com/powerhome/sketch-data-plugin/releases/download/v9.1.3/phrg.sketchplugin.zip" sparkle:version="9.1.3"/>
+>>>>>>> e8dd6bcc69f0d56932b3811361040ae353d622d6
     </item>
     <item>
       <enclosure url="https://github.com/powerhome/sketch-data-plugin/releases/download/v9.1.2/phrg.sketchplugin.zip" sparkle:version="9.1.2"/>
