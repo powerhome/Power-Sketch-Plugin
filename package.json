@@ -1,6 +1,6 @@
 {
   "name": "phrg",
-  "version": "9.4.0",
+  "version": "9.5.0",
   "description": "A DataSupplier plugin",
   "engines": {
     "sketch": ">=3.0"
