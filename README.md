@@ -97,7 +97,7 @@ Log in
 skpm login
 ```
 
-Publish new version
+Publish new version. Make sure that you're on `main` and have pulled the latest from `main`.
 
 ```bash
 skpm publish <bump> --no-registry
