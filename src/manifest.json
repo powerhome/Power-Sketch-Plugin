@@ -13,7 +13,8 @@
           "Shutdown": "onShutdown",
           "SupplyDepartments": "onSupplyDepartments",
           "SupplyTerritories": "onSupplyTerritories",
-          "SupplyTerritoriesAbbr": "onSupplyTerritoriesAbbr"
+          "SupplyTerritoriesAbbr": "onSupplyTerritoriesAbbr",
+          "SupplyMonths": "onSupplyMonths"
         }
       }
     }
