@@ -22,15 +22,15 @@ git clone https://github.com/powerhome/Power-Sketch-Plugin.git
 ```
 #### Add a data set to the repo
 
-After creating a branch, you would need to create a javascript file in the constants folder for the new data set constants. Follow the format below where `NEW_SET` is the name of the new data set.
-```
-const NEW_SET = [
-  "Data 1",
-  "Data 2",
-  "Data 3"
-]
-
-module.exports = NEW_SET;
+After creating a branch, you would need to create a javascript file in the `constants` folder for the new data set constants. Follow the format below where `NEW_SET` is the name of the new data set.
+```diff
++ const NEW_SET = [
++   "Data 1",
++   "Data 2",
++   "Data 3"
++ ]
++
++ module.exports = NEW_SET;
 ```
 
 In `manifest.json`, add an action (below) under the handler. Replace `NewSet` with the new data set name.
@@ -78,21 +78,39 @@ export function onStartup () {
 
 1. Quit Sketch
 2. Run `npm install`
-3. Open Sketch again and check if it's working as expected
+3. Enable Sketch developer mode (y)
+3. Open Sketch again and check if it is working as expected
 
 *Note: You don't need to commit your changes to test locally.*
 
 ### Publishing a new version
+*Important: Push and merge changes to the repo before publishing a new version on sketch plugin manager.*
 
-Run the command below where `bump` can be `major`, `minor` or `patch`. Make sure to include `--no-registry` so that the plugin does not get added to Sketch plugin registry.
+Install Sketch plugin manager (skpm)
+
+```
+npm install -g skpm
+```
+
+Log in
+
+```
+skpm login
+```
+
+Publish new version
 
 ```bash
 skpm publish <bump> --no-registry
 ```
 
-* `Major` – Data set added or deleted
-* `Minor` – Existing data set edited
-* `Patch` – Bugs, typos
+`<bump>` can be `major`, `minor` or `patch`. Make sure to include `--no-registry` so that the plugin does not get added to Sketch plugin registry.
+
+| Version update  | Description |
+| ------------- | ------------- |
+| `major`  | Added or deleted data set  |
+| `minor`  | Edit existing data set  |
+| `patch`  | Bugs, typos  |
 
 *Note: `skpm publish` will create a new release on your GitHub repository and create an appcast file in order for Sketch users to be notified of the update.*
 
