@@ -77,8 +77,7 @@ export function onStartup () {
 #### Testing in Sketch
 
 1. Quit Sketch
-2. Run `npm install`
-3. Enable Sketch developer mode (y)
+2. Run `npm install` (terminal may ask you to install Sketch developer mode. If so, say yes.)
 3. Open Sketch again and check if it is working as expected
 
 *Note: You don't need to commit your changes to test locally.*
