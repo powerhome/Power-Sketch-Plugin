@@ -100,10 +100,10 @@ skpm login
 Publish new version. Make sure that you're on `main` and have pulled the latest from `main`.
 
 ```bash
-skpm publish <bump> --no-registry
+skpm publish <bump> --skip-registry
 ```
 
-`<bump>` can be `major`, `minor` or `patch`. Make sure to include `--no-registry` so that the plugin does not get added to Sketch plugin registry.
+`<bump>` can be `major`, `minor` or `patch`. Make sure to include `--skip-registry` so that the plugin does not get added to Sketch plugin registry.
 
 | Version update  | Description |
 | ------------- | ------------- |
