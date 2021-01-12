@@ -1,10 +1,6 @@
 {
   "name": "phrg",
-<<<<<<< HEAD
-  "version": "9.3.0",
-=======
   "version": "9.7.0",
->>>>>>> 8e4304085448760d5a06d66d26685b4e4581cd69
   "description": "Power Home Remodeling data supplier plugin",
   "engines": {
     "sketch": ">=3.0"
