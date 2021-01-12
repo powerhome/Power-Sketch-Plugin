@@ -14,7 +14,8 @@
           "SupplyDepartments": "onSupplyDepartments",
           "SupplyTerritories": "onSupplyTerritories",
           "SupplyTerritoriesAbbr": "onSupplyTerritoriesAbbr",
-          "SupplyMonths": "onSupplyMonths"
+          "SupplyMonths": "onSupplyMonths",
+          "SupplyMonthsAbbr": "onSupplyMonthsAbbr"
         }
       }
     }
