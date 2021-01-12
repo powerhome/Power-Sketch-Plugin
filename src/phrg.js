@@ -6,6 +6,7 @@ const DEPT = require("../constants/departments");
 const TERR = require("../constants/territories");
 const TERR_ABBR = require("../constants/territories_abbr");
 const MONTHS = require("../constants/months");
+const MONTHS_ABBR = require("../constants/months_abbr");
 
 //startup
 export function onStartup () {
@@ -13,6 +14,7 @@ export function onStartup () {
   DataSupplier.registerDataSupplier('public.text', 'Territories', 'SupplyTerritories');
   DataSupplier.registerDataSupplier('public.text', 'Territories (abbr)', 'SupplyTerritoriesAbbr');
   DataSupplier.registerDataSupplier('public.text', 'Months', 'SupplyMonths');
+  DataSupplier.registerDataSupplier('public.text', 'Months (abbr)', 'SupplyMonthsAbbr');
 }
 
 //shutdown
@@ -68,6 +70,20 @@ export function onSupplyMonths(context) {
   while (dataIndex < dataCount) {
       const months = sample(MONTHS);
       DataSupplier.supplyDataAtIndex(dataKey, months, dataIndex);
+      dataIndex++;
+  }
+}
+
+//months abbreviated
+// TODO: this needs refactor
+export function onSupplyMonthsAbbr(context) {
+  var dataKey = context.data.key;
+  var dataCount = context.data.requestedCount;
+
+  var dataIndex = 0;
+  while (dataIndex < dataCount) {
+      const monthsAbbr = sample(MONTHS_ABBR);
+      DataSupplier.supplyDataAtIndex(dataKey, monthsAbbr, dataIndex);
       dataIndex++;
   }
 }
