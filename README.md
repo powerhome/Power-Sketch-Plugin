@@ -104,7 +104,7 @@ Install Sketch plugin manager (skpm)
 npm install -g skpm
 ```
 
-Log in. You will be asked for a token ([how to generate a personal token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token)).
+Log in. You will be asked for a token ([how to generate a personal token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token)). Check off "Repo" when creating the token.
 
 ```
 skpm login
@@ -116,12 +116,11 @@ Publish new version. Make sure that you're on `main` and have pulled the latest 
 skpm publish <bump> --skip-registry
 ```
 
-`<bump>` can be `major`, `minor` or `patch`. Make sure to include `--skip-registry` so that the plugin does not get added to Sketch plugin registry.
+`<bump>` can be `minor` or `patch`. Make sure to include `--skip-registry` so that the plugin does not get added to Sketch plugin registry.
 
 | Version update  | Description |
 | ------------- | ------------- |
-| `major`  | Added or deleted data set  |
-| `minor`  | Edit existing data set  |
+| `minor`  | Adding, Deleting, or editing data sets  |
 | `patch`  | Bugs, typos  |
 
 *Note: `skpm publish` will create a new release on your GitHub repository and create an appcast file in order for Sketch users to be notified of the update.*
@@ -132,24 +131,22 @@ skpm publish <bump> --skip-registry
 <details>
   <summary>Usage</summary>
   <p>
-
     Install the dependencies
-
-    ```bash
+  </p>
+  
     npm install
-    ```
 
+  <p>
     Once the installation is done, you can run some commands inside the project folder:
+  </p>
 
-    ```bash
     npm run build
-    ```
 
+  <p>
     To watch for changes:
-
-    ```bash
+  </p>
+    
     npm run watch
-    ```
 
   </p>
 </details>
@@ -158,19 +155,17 @@ skpm publish <bump> --skip-registry
 <details>
   <summary>Debugging</summary>
   <p>
-    
     To view the output of your `console.log`, you have a few different options:
-
     - Use the [`sketch-dev-tools`](https://github.com/skpm/sketch-dev-tools)
     - Open `Console.app` and look for the sketch logs
     - Look at the `~/Library/Logs/com.bohemiancoding.sketch3/Plugin Output.log` file
-
     Skpm provides a convenient way to do the latter:
-
-    ```bash
+  </p>
+  
     skpm log
-    ```
 
+  <p>
     The `-f` option causes `skpm log` to not stop when the end of logs is reached, but rather to wait for additional data to be appended to the input
   </p>
+
 </details>
